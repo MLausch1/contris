@@ -22,6 +22,12 @@ namespace ConTris
 		/// </summary>
 		private static int points;
 
+		private struct ConsoleSettings
+		{
+			public int bufW, bufH, conW, conH;
+		}
+		private static ConsoleSettings settings;
+
 		/// <summary>
 		/// Counter for the Worker thread
 		/// </summary>
@@ -66,10 +72,12 @@ namespace ConTris
 		{
 			//preparing Console
 			Console.Clear();
-			Console.Beep(600, 500);
 			Console.ForegroundColor = ConsoleColor.Gray;
 			Console.BackgroundColor = ConsoleColor.Black;
 			Console.CursorVisible = false;
+			settings=new ConsoleSettings();
+			saveConsole();
+			setConsole(80, 25);
 
 			//Intro
 			Console.Write(@"ConTris || C# Console Tetris by AyrA.ch
@@ -181,6 +189,7 @@ Press a Key to start
 You made {0} lines. Press Esc to exit",points),ConsoleColor.Red);
 			while(Console.ReadKey(true).Key != ConsoleKey.Escape);
 			Console.ResetColor();
+			resetConsole();
 			Console.CursorVisible = true;
 			return 0;
 		}
@@ -334,6 +343,53 @@ You made {0} lines. Press Esc to exit",points),ConsoleColor.Red);
 			Console.ForegroundColor = b;
 			Console.Write(a);
 			Console.ForegroundColor = c;
+		}
+
+		static void saveConsole()
+		{
+			settings.bufH = Console.BufferHeight;
+			settings.bufW = Console.BufferWidth;
+			settings.conH = Console.WindowHeight;
+			settings.conW = Console.WindowWidth;
+		}
+		static void resetConsole()
+		{
+			if(settings.bufH < Console.WindowHeight)
+			{
+				Console.WindowHeight = settings.conH;
+				Console.BufferHeight = settings.bufH;
+			}
+			else
+			{
+				Console.BufferHeight = settings.bufH;
+				Console.WindowHeight = settings.conH;
+			}
+			if(settings.bufW < Console.WindowWidth)
+			{
+				Console.WindowWidth = settings.conW;
+				Console.BufferWidth = settings.bufW;
+			}
+			else
+			{
+				Console.BufferWidth = settings.bufW;
+				Console.WindowWidth = settings.conW;
+			}
+		}
+		static void setConsole(int w, int h)
+		{
+			if(Console.BufferWidth < w)
+			{
+				Console.BufferWidth = w;
+			}
+			Console.WindowWidth = w;
+			Console.BufferWidth = w;
+
+			if(Console.BufferHeight< h)
+			{
+				Console.BufferHeight = h;
+			}
+			Console.WindowHeight = h;
+			Console.BufferHeight = h;
 		}
 	}
 }
