@@ -1,5 +1,0 @@
-C:\Dokumente und Einstellungen\AyrA\Eigene Dateien\My Dropbox\Projects\ConTris\ConTris\bin\Debug\ConTris.exe
-C:\Dokumente und Einstellungen\AyrA\Eigene Dateien\My Dropbox\Projects\ConTris\ConTris\bin\Debug\ConTris.pdb
-C:\Dokumente und Einstellungen\AyrA\Eigene Dateien\My Dropbox\Projects\ConTris\ConTris\obj\Debug\ResolveAssemblyReference.cache
-C:\Dokumente und Einstellungen\AyrA\Eigene Dateien\My Dropbox\Projects\ConTris\ConTris\obj\Debug\ConTris.exe
-C:\Dokumente und Einstellungen\AyrA\Eigene Dateien\My Dropbox\Projects\ConTris\ConTris\obj\Debug\ConTris.pdb
