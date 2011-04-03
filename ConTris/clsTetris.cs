@@ -327,19 +327,7 @@ namespace ConTris
 				int[,] temp = (int[,])Container.Clone();
 				int add=0;
 
-
-				for(int i = 0;i <= Block.GetUpperBound(0);i++)
-				{
-					for(int j = 0;j <= Block.GetUpperBound(1);j++)
-					{
-						if(Block[i, j] != 0)
-						{
-							Block[i, j] = 7;
-						}
-					}
-				}
-				temp=fixBlock(Block,temp,posX,posY);
-
+				//Draw shadow Block
 				if(shadow)
 				{
 					for(int i = 0;i <= Block.GetUpperBound(0);i++)
@@ -360,10 +348,22 @@ namespace ConTris
 
 					if(posY + add - 1 > 0)
 					{
-						return (int[,])fixBlock(Block, temp, posX, posY + add - 1).Clone();
+						temp=(int[,])fixBlock(Block, temp, posX, posY + add - 1).Clone();
 					}
 				}
-				return temp;
+
+				//Draw current Block
+				for(int i = 0;i <= Block.GetUpperBound(0);i++)
+				{
+					for(int j = 0;j <= Block.GetUpperBound(1);j++)
+					{
+						if(Block[i, j] != 0)
+						{
+							Block[i, j] = 7;
+						}
+					}
+				}
+				return fixBlock(Block,temp,posX,posY);
 			}
 		}
 
